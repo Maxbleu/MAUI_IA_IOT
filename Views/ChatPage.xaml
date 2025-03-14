@@ -15,6 +15,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <Label 
@@ -28,10 +30,28 @@
                 Grid.Column="1"
                 WidthRequest="40" 
                 HeightRequest="40" 
-                Fill="{Binding Color}" 
+                Fill="{Binding ColorRojo}" 
                 Stroke="Gray" 
                 StrokeThickness="5"
-                HorizontalOptions="End"/>
+                HorizontalOptions="Center"/>
+            
+            <Shapes:Ellipse 
+                Grid.Column="2"
+                WidthRequest="40" 
+                HeightRequest="40" 
+                Fill="{Binding ColorVerde}" 
+                Stroke="Gray" 
+                StrokeThickness="5"
+                HorizontalOptions="Center"/>
+            
+            <Shapes:Ellipse 
+                Grid.Column="3"
+                WidthRequest="40" 
+                HeightRequest="40" 
+                Fill="{Binding ColorAzul}" 
+                Stroke="Gray" 
+                StrokeThickness="5"
+                HorizontalOptions="Center"/>
         </Grid>
         <CollectionView Grid.Row="1" BackgroundColor="#F5F5F5" Margin="16" ItemsSource="{Binding Messages}" ItemsUpdatingScrollMode="KeepLastItemInView">
             <CollectionView.ItemTemplate>
