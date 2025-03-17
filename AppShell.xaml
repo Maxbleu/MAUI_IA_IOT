@@ -4,8 +4,9 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiApp_IA_IOT"
+    xmlns:views="clr-namespace:MauiApp_IA_IOT.Views"
     Title="MauiApp_IA_IOT">
 
-    <ShellContent ContentTemplate="{DataTemplate local:ChatPage}" Route="ChatPage" />
-    
+    <ShellContent ContentTemplate="{DataTemplate views:ChatPage}" />
+
 </Shell>

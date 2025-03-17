@@ -14,13 +14,12 @@ namespace MauiApp_IA_IOT.ViewModels
     public class ChatViewModel : INotifyPropertyChanged
     {
         private static readonly string LLM_URL = "http://192.168.1.130:1234/v1/chat/completions";
-        private string HOSTNAME = "http://192.168.1.130/";
+        private string HOSTNAME = "http://192.168.1.130:1880/encender?command=";
 
+        public event PropertyChangedEventHandler? PropertyChanged;
         private Brush _colorRojo = Brush.DarkRed;
         private Brush _colorAzul = Brush.DarkBlue;
         private Brush _colorVerde = Brush.DarkGreen;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
         private string _newMessageText;
 
         public ObservableCollection<Message> Messages { get; set; }
@@ -95,7 +94,6 @@ namespace MauiApp_IA_IOT.ViewModels
             );
             await SendInstructionToLLMAsync(this.NewMessageText);
         }
-
         private async Task SendInstructionToLLMAsync(string instruction)
         {
             var requestData = new
@@ -197,7 +195,7 @@ namespace MauiApp_IA_IOT.ViewModels
                             if (functionName == "turn_on_light_red")
                             {
                                 this.ColorRojo = Brush.Red;
-                                //await SendCommandToNodeRedAsync("encender_luces_rojas");
+                                await SendCommandToNodeRedAsync("encender");
                                 color = "rojas";
                             }
                             else if (functionName == "turn_on_light_blue")
@@ -219,7 +217,7 @@ namespace MauiApp_IA_IOT.ViewModels
                             if (functionName == "turn_off_light_red")
                             {
                                 this.ColorRojo = Brush.DarkRed;
-                                //await SendCommandToNodeRedAsync("apagar_luces_rojas");
+                                await SendCommandToNodeRedAsync("apagar");
                                 color = "rojas";
                             }
                             else if (functionName == "turn_off_light_blue")
@@ -247,12 +245,12 @@ namespace MauiApp_IA_IOT.ViewModels
                     else
                     {
                         string contentMessage = responseJson["choices"]?[0]?["message"]?["content"]?.ToString();
-                        ThingsUtil.SendSnakbarMessage($"Respuesta del modelo: {contentMessage}");
+                        ThingsUtils.SendSnakbarMessage($"Respuesta del modelo: {contentMessage}");
                     }
                 }
                 catch (Exception ex)
                 {
-                    ThingsUtil.SendSnakbarMessage("Error comunicándose con LM Studio: " + ex.Message);
+                    ThingsUtils.SendSnakbarMessage("Error comunicándose con LM Studio: " + ex.Message);
                 }
             }
             this.NewMessageText = string.Empty;
@@ -263,7 +261,8 @@ namespace MauiApp_IA_IOT.ViewModels
             {
                 try
                 {
-                    var response = await client.GetAsync(HOSTNAME);
+                    string url = HOSTNAME + command;
+                    var response = await client.GetAsync(url);
 
                     if (!response.IsSuccessStatusCode)
                     {

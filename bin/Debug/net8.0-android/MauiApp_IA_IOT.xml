@@ -4,12 +4,23 @@
         <name>MauiApp_IA_IOT</name>
     </assembly>
     <members>
-        <member name="M:MauiApp_IA_IOT.Util.ThingsUtil.SendSnakbarMessage(System.String)">
+        <member name="M:MauiApp_IA_IOT.Util.ThingsUtils.SendSnakbarMessage(System.String)">
             <summary>
             Este método se encarga de mostrar mensajes
             a partir del Sankbar
             </summary>
             <param name="message"></param>
+        </member>
+        <member name="M:MauiApp_IA_IOT.Util.ThingsUtils.GetUrl(System.String,System.String,System.String,System.String)">
+            <summary>
+            Este método se encarga de volver una url resultado
+            de la concatenación de los string que recibe por parámtro
+            </summary>
+            <param name="protocol"></param>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <param name="path"></param>
+            <returns></returns>
         </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
             <summary>

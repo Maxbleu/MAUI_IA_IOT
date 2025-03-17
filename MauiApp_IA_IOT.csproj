@@ -65,21 +65,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\ModeloSettingsPage.xaml.cs">
-	    <DependentUpon>ModeloSettingsPage.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Views\ChatPage.xaml.cs">
 	    <DependentUpon>ChatPage.xaml</DependentUpon>
 	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\NodeRedSettingsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\ModeloSettingsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
