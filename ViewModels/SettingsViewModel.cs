@@ -17,7 +17,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     //  CAMPOS NODERED
     private Brush _colorNodeRed = Brush.Red;
     private string _protocolNodeRed = "http";
-    private string _hostNodeRed = "192.168.1.130";
+    private string _hostNodeRed = "localhost";
     private string _portNodeRed = "1880";
     private string _colorSeleccionado;
 
@@ -28,7 +28,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     //  CAMPOS MODELOS
     private Brush _colorModelos = Brush.Red;
     private string _protocolModelos = "http";
-    private string _hostModelos = "192.168.1.130";
+    private string _hostModelos = "localhost";
     private string _portModelos = "1234";
 
     private string _functionName;
@@ -355,78 +355,78 @@ public class SettingsViewModel : INotifyPropertyChanged
     {
         var requestData = new
         {
-            model = "llama-3.2-3b-instruct",
+            model = this.ModeloSeleccionado,
             messages = new[] {
                     new { role = "user", content = instruction }
                 },
             tools = new[] {
-                    new {
-                        type = "function",
-                        function = new {
-                            name = "turn_on_light_red",
-                            description = "Turn on the light. If the user instructs 'enciende las luces rojas', this function should be called.",
-                            parameters = new {
-                                type = "object",
-                                properties = new { }
-                            }
+                new {
+                    type = "function",
+                    function = new {
+                        name = "turn_on_light_red",
+                        description = "Turn on the light. If the user instructs 'enciende las luces rojas', this function should be called.",
+                        parameters = new {
+                            type = "object",
+                            properties = new { }
                         }
-                    },
-                    new {
-                        type = "function",
-                        function = new {
-                            name = "turn_off_light_red",
-                            description = "Turn on the light. If the user instructs 'apaga las luces rojas', this function should be called.",
-                            parameters = new {
-                                type = "object",
-                                properties = new { }
-                            }
+                    }
+                },
+                new {
+                    type = "function",
+                    function = new {
+                        name = "turn_off_light_red",
+                        description = "Turn on the light. If the user instructs 'apaga las luces rojas', this function should be called.",
+                        parameters = new {
+                            type = "object",
+                            properties = new { }
                         }
-                    },
-                    new {
-                        type = "function",
-                        function = new {
-                            name = "turn_on_light_blue",
-                            description = "Turn on the light. If the user instructs 'enciende las luces azules', this function should be called.",
-                            parameters = new {
-                                type = "object",
-                                properties = new { }
-                            }
+                    }
+                },
+                new {
+                    type = "function",
+                    function = new {
+                        name = "turn_on_light_blue",
+                        description = "Turn on the light. If the user instructs 'enciende las luces azules', this function should be called.",
+                        parameters = new {
+                            type = "object",
+                            properties = new { }
                         }
-                    },
-                    new {
-                        type = "function",
-                        function = new {
-                            name = "turn_off_light_blue",
-                            description = "Turn on the light. If the user instructs 'apaga las luces azules', this function should be called.",
-                            parameters = new {
-                                type = "object",
-                                properties = new { }
-                            }
+                    }
+                },
+                new {
+                    type = "function",
+                    function = new {
+                        name = "turn_off_light_blue",
+                        description = "Turn on the light. If the user instructs 'apaga las luces azules', this function should be called.",
+                        parameters = new {
+                            type = "object",
+                            properties = new { }
                         }
-                    },
-                    new {
-                        type = "function",
-                        function = new {
-                            name = "turn_on_light_green",
-                            description = "Turn on the light. If the user instructs 'enciende las luces verdes', this function should be called.",
-                            parameters = new {
-                                type = "object",
-                                properties = new { }
-                            }
+                    }
+                },
+                new {
+                    type = "function",
+                    function = new {
+                        name = "turn_on_light_green",
+                        description = "Turn on the light. If the user instructs 'enciende las luces verdes', this function should be called.",
+                        parameters = new {
+                            type = "object",
+                            properties = new { }
                         }
-                    },
-                    new {
-                        type = "function",
-                        function = new {
-                            name = "turn_off_light_green",
-                            description = "Turn on the light. If the user instructs 'apaga las luces verdes', this function should be called.",
-                            parameters = new {
-                                type = "object",
-                                properties = new { }
-                            }
+                    }
+                },
+                new {
+                    type = "function",
+                    function = new {
+                        name = "turn_off_light_green",
+                        description = "Turn on the light. If the user instructs 'apaga las luces verdes', this function should be called.",
+                        parameters = new {
+                            type = "object",
+                            properties = new { }
                         }
                     }
                 }
+            }
         };
         using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) })
         {
