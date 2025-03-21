@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Shapes="clr-namespace:Microsoft.Maui.Controls.Shapes;assembly=Microsoft.Maui.Controls"
+             x:Class="MauiApp_IA_IOT.Views.SettingsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       Text="User model settings" 
+                       FontSize="20" 
+                       FontAttributes="Bold"/>
+
+                <Shapes:Ellipse 
+                        Grid.Column="1"
+                        WidthRequest="50" 
+                        HeightRequest="50" 
+                        Fill="{Binding ColorModelos}" 
+                        Stroke="Gray" 
+                        StrokeThickness="10"
+                        HorizontalOptions="End"/>
+
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Url" FontSize="16" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry Grid.Column="0" Text="{Binding ProtocolModelos}"
+                            Placeholder="http" 
+                            FontSize="16"/>
+
+                    <Entry Grid.Column="1" Text="{Binding HostNameModelos}"
+                            Placeholder="localhost" 
+                            FontSize="16"/>
+
+                    <Entry Grid.Column="2" Text="{Binding PortModelos}"
+                            Placeholder="port" 
+                            FontSize="16"/>
+
+                    <Button Grid.Column="3"
+                        ImageSource="refresh.svg"
+                        Command="{Binding ReloadModelsCommand}"
+                        IsEnabled="{Binding IsEnabledButtonModelos}"/>
+                </Grid>
+            </Grid>
+            <StackLayout Grid.Row="2" Margin="0,20,0,0">
+                <Picker
+                    VerticalOptions="Center"
+                    ItemsSource="{Binding Models}"
+                    SelectedIndex="{Binding IndexModelSelected}"
+                    SelectedItem="{Binding ModeloSeleccionado}"/>
+            </StackLayout>
+
+        </Grid>
+        <Grid Grid.Row="1" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0"
+                       Text="NodeRed settings" 
+                       FontSize="20" 
+                       FontAttributes="Bold"/>
+
+                <Shapes:Ellipse 
+                        Grid.Column="1"
+                        WidthRequest="50" 
+                        HeightRequest="50" 
+                        Fill="{Binding ColorNodeRed}" 
+                        Stroke="Gray" 
+                        StrokeThickness="10"
+                        HorizontalOptions="End"/>
+
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="Url" FontSize="16" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Entry Grid.Column="0" Text="{Binding ProtocolNodeRed}"
+                            Placeholder="http" 
+                            FontSize="16"/>
+
+                    <Entry Grid.Column="1" Text="{Binding HostNameNodeRed}"
+                            Placeholder="localhost" 
+                            FontSize="16"/>
+
+                    <Entry Grid.Column="2" Text="{Binding PortNodeRed}"
+                            Placeholder="port" 
+                            FontSize="16"/>
+
+                    <Button Grid.Column="3"
+                        ImageSource="refresh.svg"
+                        Command="{Binding ReloadNodeRedCommand}"
+                        IsEnabled="{Binding IsEnabledButtonNodeRed}"/>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>

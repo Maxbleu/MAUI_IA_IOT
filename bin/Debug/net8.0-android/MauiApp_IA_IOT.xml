@@ -22,6 +22,91 @@
             <param name="path"></param>
             <returns></returns>
         </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.ChatViewModel.SettingsModeloViewModel_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Este método se encarga de responder ante la modificación de
+            valores de la propiedad FunctionName
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.ChatViewModel.SendMessage">
+            <summary>
+            Este método se encarga de enviar
+            el mensaje escrito por el usuario
+            al modelo para que infiera que tool
+            ejecutar.
+            </summary>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.ReloadNodeRed(System.Object)">
+            <summary>
+            Este método se encarga de recargar
+            la conexión con Node-Red
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.SendCommandToNodeRedAsync(System.Boolean,System.String)">
+            <summary>
+            Este método se encarga de enviar una orden
+            que ha sido seleccionada procesada
+            por el modelo al servicio de NodeRed
+            </summary>
+            <param name="isEncenderCommand"></param>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.LoadNodeRedAsync">
+            <summary>
+            Este método se encarga de cargar la conexión
+            con NodeRed
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.NotifyResponseRequestNodeRed(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Este método se encarga de enviar un snakbar 
+            con un mensaje indicando el estado del modelo posteriormente
+            habilito o desabilito el botón e indico que el modelo esta
+            corriendo de manera normal para NodeRed
+            </summary>
+            <param name="mensajeSnakBar"></param>
+            <param name="isEnabledButton"></param>
+            <param name="isNodeRedServiceRunning"></param>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.ReloadModels(System.Object)">
+            <summary>
+            Este método se encarga de recargar la conexión
+            con los modelos.
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.SendMessageToLLMAsync(System.String)">
+            <summary>
+            Este método se encarga de enviar un mensaje
+            introducido por el usuario referido por
+            por el tipo de tool que desea que el modleo
+            ejecute.
+            </summary>
+            <param name="instruction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.LoadModelsAsync">
+            <summary>
+            Este método se encarga de cargar los modelos
+            que existen en la dirección ip que hemos indicado.
+            </summary>
+        </member>
+        <member name="M:MauiApp_IA_IOT.ViewModels.SettingsViewModel.NotifyResponseRequestModels(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Este método se encarga de enviar un snakbar 
+            con un mensaje indicando el estado del modelo posteriormente
+            habilito o desabilito el botón e indico que el modelo esta
+            corriendo de manera normal para los modelos
+            </summary>
+            <param name="mensajeSnakBar"></param>
+            <param name="isEnabledButton"></param>
+            <param name="isModeloServiceRunning"></param>
+        </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
             <summary>
             Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color

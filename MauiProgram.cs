@@ -18,8 +18,10 @@ namespace MauiApp_IA_IOT
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<ChatViewModel>();
 
+            builder.Services.AddSingleton<SettingsPage>();
             builder.Services.AddSingleton<ChatPage>();
 
 #if DEBUG
