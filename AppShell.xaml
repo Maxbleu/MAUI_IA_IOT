@@ -11,7 +11,7 @@
         <Tab Title="Chat" Icon="chat.svg">
             <ShellContent ContentTemplate="{DataTemplate views:ChatPage}" />
         </Tab>
-        <Tab Title="Modelo" Icon="settings.svg">
+        <Tab Title="Settings" Icon="settings.svg">
             <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
         </Tab>
     </TabBar>
