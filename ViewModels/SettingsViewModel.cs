@@ -270,6 +270,11 @@ public class SettingsViewModel : INotifyPropertyChanged
     /// <returns></returns>
     public async Task SendCommandToNodeRedAsync(bool isEncenderCommand, string color)
     {
+        if (!this.IsModeloServiceRunning)
+        {
+            ThingsUtils.SendSnakbarMessage("NodeRed no está conectado");
+            return;
+        }
         using (HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(5) })
         {
             string path = isEncenderCommand ? "/encender" : "/apagar";
@@ -353,6 +358,11 @@ public class SettingsViewModel : INotifyPropertyChanged
     /// <returns></returns>
     public async Task SendMessageToLLMAsync(string instruction)
     {
+        if(!this.IsNodeRedServiceRunning)
+        {
+            ThingsUtils.SendSnakbarMessage("NodeRed no está conectado");
+            return;
+        }
         var requestData = new
         {
             model = this.ModeloSeleccionado,
