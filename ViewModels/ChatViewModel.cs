@@ -76,8 +76,6 @@ namespace MauiApp_IA_IOT.ViewModels
 
             this._settingsModeloViewModel = IPlatformApplication.Current.Services.GetService<SettingsViewModel>();
             this._settingsModeloViewModel.PropertyChanged += SettingsModeloViewModel_PropertyChanged;
-            this._settingsModeloViewModel.LoadModelsAsync();
-            this._settingsModeloViewModel.LoadNodeRedAsync();
         }
 
         //  EVENTOS SUBCRIPTOS
@@ -89,62 +87,49 @@ namespace MauiApp_IA_IOT.ViewModels
         /// <param name="e"></param>
         private async void SettingsModeloViewModel_PropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == "FunctionName" && !String.IsNullOrEmpty(this._settingsModeloViewModel.FunctionName))
+            if (e.PropertyName == "IsRequestNodeRedSucessful" && this._settingsModeloViewModel.IsRequestNodeRedSucessful)
             {
-                string color = null;
-                string functionName = this._settingsModeloViewModel.FunctionName;
-                if (functionName.Contains("turn_on"))
+                if (this._settingsModeloViewModel.FunctionName.Contains("turn_on"))
                 {
-                    if (functionName == "turn_on_light_red")
+                    switch (this._settingsModeloViewModel.FunctionName)
                     {
-                        this.ColorRojo = Brush.Red;
-                        color = "rojas";
-                        await this._settingsModeloViewModel.SendCommandToNodeRedAsync(true, color);
-                    }
-                    else if (functionName == "turn_on_light_blue")
-                    {
-                        this.ColorAzul = Brush.Blue;
-                        color = "azules";
-                        await this._settingsModeloViewModel.SendCommandToNodeRedAsync(true, color);
-                    }
-                    else if (functionName == "turn_on_light_green")
-                    {
-                        this.ColorVerde = Brush.Green;
-                        color = "verdes";
-                        await this._settingsModeloViewModel.SendCommandToNodeRedAsync(true, color);
+                        case "turn_on_light_red":
+                            this.ColorRojo = Brush.Red;
+                            break;
+                        case "turn_on_light_blue":
+                            this.ColorAzul = Brush.Blue;
+                            break;
+                        case "turn_on_light_green":
+                            this.ColorVerde = Brush.Green;
+                            break;
                     }
                 }
-                else
+                else if (this._settingsModeloViewModel.FunctionName.Contains("turn_off"))
                 {
-                    if (functionName == "turn_off_light_red")
+                    switch (this._settingsModeloViewModel.FunctionName)
                     {
-                        this.ColorRojo = Brush.DarkRed;
-                        color = "rojas";
-                        await this._settingsModeloViewModel.SendCommandToNodeRedAsync(false, color);
-                    }
-                    else if (functionName == "turn_off_light_blue")
-                    {
-                        this.ColorAzul = Brush.DarkBlue;
-                        color = "azules";
-                        await this._settingsModeloViewModel.SendCommandToNodeRedAsync(false, color);
-                    }
-                    else if (functionName == "turn_off_light_green")
-                    {
-                        this.ColorVerde = Brush.DarkGreen;
-                        color = "verdes";
-                        await this._settingsModeloViewModel.SendCommandToNodeRedAsync(false, color);
+                        case "turn_off_light_red":
+                            this.ColorRojo = Brush.DarkRed;
+                            break;
+                        case "turn_off_light_blue":
+                            this.ColorAzul = Brush.DarkBlue;
+                            break;
+                        case "turn_off_light_green":
+                            this.ColorVerde = Brush.DarkGreen;
+                            break;
                     }
                 }
 
                 this.Messages.Add(
                     new Message
                     {
-                        Text = functionName.Contains("turn_on") ? $"Las luces {color} han sido encendidas" : $"Las luces {color} han sido apagadas",
+                        Text = this._settingsModeloViewModel.FunctionName.Contains("turn_on") ? $"Las luces {this._settingsModeloViewModel.ColorSeleccionado} han sido encendidas" : $"Las luces {this._settingsModeloViewModel.ColorSeleccionado} han sido apagadas",
                         IsCurrentUser = false
                     }
                 );
 
-                this._settingsModeloViewModel.FunctionName = string.Empty;
+                this.NewMessageText = string.Empty;
+                this._settingsModeloViewModel.IsRequestNodeRedSucessful = false;
             }
         }
 

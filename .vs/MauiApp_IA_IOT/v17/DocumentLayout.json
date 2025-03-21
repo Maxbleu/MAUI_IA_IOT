@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3306235-AA89-4BC0-ACE9-F0CCE3F38F99}|MauiApp_IA_IOT.csproj|c:\\users\\juanf\\desktop\\repos\\maxbleu\\mauiapp_ia_iot\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D3306235-AA89-4BC0-ACE9-F0CCE3F38F99}|MauiApp_IA_IOT.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{D3306235-AA89-4BC0-ACE9-F0CCE3F38F99}|MauiApp_IA_IOT.csproj|c:\\users\\juanf\\desktop\\repos\\maxbleu\\mauiapp_ia_iot\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3306235-AA89-4BC0-ACE9-F0CCE3F38F99}|MauiApp_IA_IOT.csproj|solutionrelative:viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3306235-AA89-4BC0-ACE9-F0CCE3F38F99}|MauiApp_IA_IOT.csproj|c:\\users\\juanf\\desktop\\repos\\maxbleu\\mauiapp_ia_iot\\viewmodels\\chatviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3306235-AA89-4BC0-ACE9-F0CCE3F38F99}|MauiApp_IA_IOT.csproj|solutionrelative:viewmodels\\chatviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AppShell.xaml",
-              "DocumentMoniker": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\AppShell.xaml",
-              "RelativeDocumentMoniker": "AppShell.xaml",
-              "ToolTip": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\AppShell.xaml",
-              "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-03-21T00:16:40.288Z",
+              "Title": "SettingsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\ViewModels\\SettingsViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\SettingsViewModel.cs",
+              "ToolTip": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\ViewModels\\SettingsViewModel.cs",
+              "RelativeToolTip": "ViewModels\\SettingsViewModel.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAApwHwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:14:52.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\ViewModels\\ChatViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ChatViewModel.cs",
+              "ToolTip": "C:\\Users\\juanf\\Desktop\\Repos\\Maxbleu\\MauiApp_IA_IOT\\ViewModels\\ChatViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ChatViewModel.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwE0AAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:00:55.955Z",
               "EditorCaption": ""
             }
           ]

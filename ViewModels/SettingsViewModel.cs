@@ -19,9 +19,11 @@ public class SettingsViewModel : INotifyPropertyChanged
     private string _protocolNodeRed = "http";
     private string _hostNodeRed = "192.168.1.130";
     private string _portNodeRed = "1880";
+    private string _colorSeleccionado;
 
     private bool _isEnabledButtonNodeRed = false;
     private bool _isNodeRedServiceRunning = false;
+    private bool _isRequestNodeRedSucessful = false;
 
     //  CAMPOS MODELOS
     private Brush _colorModelos = Brush.Red;
@@ -135,9 +137,33 @@ public class SettingsViewModel : INotifyPropertyChanged
             this.ColorModelos = this.IsModeloServiceRunning ? Brush.Green : Brush.Red;
         }
     }
+    public bool IsRequestNodeRedSucessful
+    {
+        get => _isRequestNodeRedSucessful;
+        set
+        {
+            if (_isRequestNodeRedSucessful != value)
+            {
+                _isRequestNodeRedSucessful = value;
+                OnPropertyChanged();
+            }
+        }
+    }
     public ObservableCollection<string> Models { get; set; }
 
     //  PROPIEDADES NODERED
+    public string ColorSeleccionado
+    {
+        get => _colorSeleccionado;
+        set
+        {
+            if (_colorSeleccionado != value)
+            {
+                _colorSeleccionado = value;
+                OnPropertyChanged();
+            }
+        }
+    }
     public Brush ColorNodeRed
     {
         get => this._colorNodeRed;
@@ -220,6 +246,9 @@ public class SettingsViewModel : INotifyPropertyChanged
         this.Models = new ObservableCollection<string>();
         this.ReloadModelsCommand = new Command(ReloadModels);
         this.ReloadNodeRedCommand = new Command(ReloadNodeRed);
+
+        this.LoadModelsAsync();
+        this.LoadNodeRedAsync();
     }
 
     /// <summary>
@@ -252,6 +281,10 @@ public class SettingsViewModel : INotifyPropertyChanged
                 if (!response.IsSuccessStatusCode)
                 {
                     ThingsUtils.SendSnakbarMessage("Error al enviar la orden a Node-RED: " + response.ReasonPhrase);
+                }
+                else
+                {
+                    this.IsRequestNodeRedSucessful = true; 
                 }
             }
             catch (Exception ex)
@@ -411,7 +444,52 @@ public class SettingsViewModel : INotifyPropertyChanged
                 JToken toolCalls = responseJson["choices"]?[0]?["message"]?["tool_calls"];
                 if (toolCalls != null && toolCalls.HasValues)
                 {
+                    bool isEncenderCommand = true;
                     this.FunctionName = toolCalls.First["function"]?["name"]?.ToString();
+                    if (this.FunctionName.Contains("turn_on"))
+                    {
+                        isEncenderCommand = true;
+                        switch (this.FunctionName)
+                        {
+                            case "turn_on_light_red":
+                                this.ColorSeleccionado = "rojas";
+                                break;
+                            case "turn_on_light_blue":
+                                this.ColorSeleccionado = "azules";
+                                break;
+                            case "turn_on_light_green":
+                                this.ColorSeleccionado = "verdes";
+                                break;
+                            default:
+                                ThingsUtils.SendSnakbarMessage("No se ha encontrado una instrucción válida");
+                                return;
+                        }
+                    }
+                    else if (this.FunctionName.Contains("turn_off"))
+                    {
+                        isEncenderCommand = false;
+                        switch (this.FunctionName)
+                        {
+                            case "turn_off_light_red":
+                                this.ColorSeleccionado = "rojas";
+                                break;
+                            case "turn_off_light_blue":
+                                this.ColorSeleccionado = "azules";
+                                break;
+                            case "turn_off_light_green":
+                                this.ColorSeleccionado = "verdes";
+                                break;
+                            default:
+                                ThingsUtils.SendSnakbarMessage("No se ha encontrado una instrucción válida");
+                                return;
+                        }
+                    }
+                    else
+                    {
+                        ThingsUtils.SendSnakbarMessage("No se ha encontrado una instrucción válida");
+                        return;
+                    }
+                    await SendCommandToNodeRedAsync(isEncenderCommand, this.ColorSeleccionado);
                 }
                 else
                 {
